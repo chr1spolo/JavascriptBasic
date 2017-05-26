@@ -16,15 +16,17 @@ function Run() {
 }
 
 
-let totalKms;
-//es mala practica colocar el length del array
-//ya que cada vez que ejecuta el ciclo,
-//este pregunta por el tamaño del array, y si
-// el array se modifica dentro del ciclo, basicamente
-// creariamos un ciclo infinito
-for( let i = 0; i < dias.length; i++)
+let totalKms = 0;
+
+
+let size = dias.length;
+
+for( let i = 0; i < size; i++)
 {
     const kms = Run();
-    totalKms += ksm;
-    console.log(`El día ${i} es el ${dias[i]}`);
+    totalKms += kms;
+    console.log(`El día ${dias[i]} ${nombre} corrió ${kms} km`);
 }
+
+console.log(`En total, ${nombre} corrió ${totalKms}
+con un promedio de ${(totalKms / size).toFixed(2)}`);
