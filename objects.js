@@ -50,24 +50,56 @@
 // console.log( distancia(p1,p2) )
 
 // v3 usando clases / prototipos
-function Punto(x, y) {
-    this.x = x
-    this.y = y
+// function Punto(x, y) {
+//     this.x = x
+//     this.y = y
+// }
+
+// Punto.prototype.moveX = function moveX(x) { this.x += x }
+// Punto.prototype.moveY = function moveY(y) { this.y += y }
+// Punto.prototype.distance = function distance(p) {
+//     const x = this.x - p.x
+//     const y = this.y - p.y
+
+//     return Math.sqrt( x*x + y*y )
+// }
+
+// const p1 = new Punto(0, 4)
+
+// const p2 = new Punto(3, 0)
+
+
+// console.log(p1.distance(p2))
+// console.log(p2.distance(p1))
+// p1.moveX(10)
+// console.log(p1.distance(p2))
+// p2.moveY(-4)
+// console.log(p1.distance(p2))
+
+// v4 usando object create para prototipos
+const Punto = {
+    init: function (x, y) {
+        this.x = x
+        this.y = y
+    },
+    moveX: function moveX(x) {
+        this.x += x
+    },
+    moveY: function moveX(y) {
+        this.y += y
+    },
+    distance: function distance(p) {
+        const x = this.x - p.x
+        const y = this.y - p.y
+    
+        return Math.sqrt( x*x + y*y )
+    }
 }
 
-Punto.prototype.moveX = function moveX(x) { this.x += x }
-Punto.prototype.moveY = function moveY(y) { this.y += y }
-Punto.prototype.distance = function distance(p) {
-    const x = this.x - p.x
-    const y = this.y - p.y
-
-    return Math.sqrt( x*x + y*y )
-}
-
-const p1 = new Punto(0, 4)
-
-const p2 = new Punto(3, 0)
-
+const p1 = Object.create(Punto)
+      p2 = Object.create(Punto)
+p1.init(0, 4)
+p2.init(3, 0)
 
 console.log(p1.distance(p2))
 console.log(p2.distance(p1))
